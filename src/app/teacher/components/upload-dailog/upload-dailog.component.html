@@ -1,0 +1,19 @@
+<div class="upload-dailog--wrapper">
+  <mat-label color="primary">Click or Drag and drop the files</mat-label>
+  <input
+    type="file"
+    placeholder="click or drag and drop to upload"
+    name=""
+    #imgFile
+    class="form-control"
+    id=""
+  />
+  <button
+    (click)="handleUpload()"
+    mat-raised-button
+    class="mt-2"
+    color="primary"
+  >
+    Upload
+  </button>
+</div>

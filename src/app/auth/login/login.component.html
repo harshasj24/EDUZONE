@@ -1,0 +1,69 @@
+<div
+  class="row justify-content-center align-items-center mt-4"
+  style="min-height: 500px"
+>
+  <div id="login-column" class="col-md-6">
+    <div id="login-box" class="col-md-12">
+      <form
+        [formGroup]="loginForm"
+        id="login-form"
+        class="form"
+        action=""
+        method="post"
+        (ngSubmit)="loginForm.valid && handleLoginSubmit()"
+      >
+        <h3 class="text-center">Login to EDUZONE!</h3>
+        <div class="form-group">
+          <label for="email">Username:</label><br />
+          <input
+            formControlName="userName"
+            type="text"
+            name="email"
+            id="email"
+            class="form-control"
+          />
+          <mat-error *ngIf="userName?.touched && userName?.invalid"
+            >Username Is Required</mat-error
+          >
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label><br />
+          <input
+            type="text"
+            name="password"
+            id="password"
+            class="form-control"
+            matInput
+            formControlName="password"
+          />
+          <mat-error *ngIf="password?.touched && password?.invalid"
+            >Password Is Required</mat-error
+          >
+        </div>
+        <div class="input-group mb-3 d-flex flex-column">
+          <label for="role" class="m-0">Tell us who u are:</label><br />
+          <select
+            formControlName="role"
+            class="custom-select form-control w-100"
+            id="role"
+          >
+            <option selected disabled>Choose Role...</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+          <mat-error *ngIf="role?.touched && role?.invalid"
+            >Role Is Required</mat-error
+          >
+        </div>
+        <div class="form-group">
+          <input
+            type="submit"
+            name="submit"
+            class="btn btn-dark btn-block"
+            value="Submit"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

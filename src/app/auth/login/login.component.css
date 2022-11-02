@@ -1,0 +1,6 @@
+.input-group > label {
+  margin: 0 !important;
+}
+.input-group select {
+  margin: 0;
+}

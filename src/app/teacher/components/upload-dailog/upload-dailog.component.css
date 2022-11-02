@@ -1,0 +1,29 @@
+::-webkit-file-upload-button {
+  display: none;
+}
+.upload-dailog--wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.upload-dailog--wrapper input {
+  width: 450px;
+  height: 250px;
+  display: flex !important;
+  align-items: center !important;
+  text-align: center !important;
+  /* color: transparent; */
+  border: 2px dotted rgb(166, 165, 165) !important;
+  outline: none !important;
+  background-color: transparent !important;
+  z-index: 100;
+  position: relative;
+}
+.upload-dailog--wrapper input:focus {
+  box-shadow: none !important;
+}
+mat-label {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}

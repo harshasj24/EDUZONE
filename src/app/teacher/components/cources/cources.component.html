@@ -1,0 +1,23 @@
+<div id="cources" class="cources--wrapper cources">
+  <div class="cources__cards">
+    <mat-card *ngFor="let course of allCourses">
+      <h1>{{ course.courseName }}</h1>
+      <!-- <h3>{{course.}}</h3>
+      <h3>Cource description(containes)</h3> -->
+      <div class="notes d-flex align-items-center">
+        <a [href]="course.url" download><mat-icon>download</mat-icon></a>
+        <span>Notes</span>
+      </div>
+    </mat-card>
+  </div>
+  <button
+    class="add hide"
+    matTooltip="Add Images"
+    (click)="handleOpen()"
+    id="addBtn"
+    mat-icon-button
+    color="primary"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

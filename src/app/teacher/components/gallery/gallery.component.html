@@ -1,0 +1,16 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div id="galleryTab" class="tab-body Gallery mt-3">
+  <mat-card class="gallery-card" *ngFor="let gallery of teacherGallery">
+    <img [src]="gallery.url" alt="" />
+  </mat-card>
+  <button
+    (click)="handleAdd()"
+    class="add hide"
+    matTooltip="Add Images"
+    id="addBtn"
+    mat-icon-button
+    color="primary"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
