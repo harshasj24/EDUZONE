@@ -6,12 +6,14 @@ import { ListTeachersComponent } from "./teacher/list-teachers/list-teachers.com
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
+import { AuthGuard } from "./gaurds/auth.guard";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "courses", component: ListCoursesComponent },
   {
     path: "teachers",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./teacher/teacher.module").then((m) => m.TeacherModule),
   },

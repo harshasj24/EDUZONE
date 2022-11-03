@@ -1,4 +1,5 @@
 <div class="upload-dailog--wrapper">
+  <app-upload-progress *ngIf="isLoading"></app-upload-progress>
   <mat-label color="primary">Click or Drag and drop the files</mat-label>
   <input
     type="file"

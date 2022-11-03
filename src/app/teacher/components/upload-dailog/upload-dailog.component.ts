@@ -16,14 +16,16 @@ export class UploadDailogComponent implements OnInit {
   ) {}
   @ViewChild("imgFile") file: any;
   dailog: MatDialogRef<UploadDailogComponent>;
-
+  isLoading: boolean = false;
   ngOnInit(): void {}
   handleUpload() {
     let imageFile = this.file.nativeElement.files[0];
     const formData = new FormData();
     formData.append("file", imageFile);
+    this.isLoading = true;
     this.teacherService.addTeacherMedia(formData).subscribe((res) => {
       console.log(res);
+      this.isLoading = false;
       this.matDailog.closeAll();
     });
   }

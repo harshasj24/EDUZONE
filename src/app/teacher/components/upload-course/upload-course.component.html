@@ -1,33 +1,36 @@
-<form action="" [formGroup]="courseForm" (ngSubmit)="handleSubmit()">
-  <h1>Add Course</h1>
-  <mat-form-field class="w-100" appearance="outline">
-    <mat-label>Course Name</mat-label>
-    <input formControlName="courseName" matInput placeholder="Placeholder" />
-  </mat-form-field>
-  <div class="upload">
-    <mat-label color="primary">Click or Drag and drop the files</mat-label>
-    <input
-      type="file"
-      placeholder="click or drag and drop to upload"
-      name=""
-      #file
-      class="form-control"
-      id=""
-    />
+<div class="wrapper">
+  <app-upload-progress *ngIf="isLoading"></app-upload-progress>
+  <form action="" [formGroup]="courseForm" (ngSubmit)="handleSubmit()">
+    <h1>Add Course</h1>
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Course Description</mat-label>
+      <mat-label>Course Name</mat-label>
+      <input formControlName="courseName" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <div class="upload">
+      <mat-label color="primary">Click or Drag and drop the files</mat-label>
       <input
-        formControlName="courseContaines"
-        matInput
-        placeholder="Placeholder"
+        type="file"
+        placeholder="click or drag and drop to upload"
+        name=""
+        #file
+        class="form-control"
+        id=""
       />
-    </mat-form-field>
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Course Reference</mat-label>
-      <input formControlName="reference" matInput placeholder="Placeholder" />
-    </mat-form-field>
-  </div>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Course Description</mat-label>
+        <input
+          formControlName="courseContaines"
+          matInput
+          placeholder="Placeholder"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Course Reference</mat-label>
+        <input formControlName="reference" matInput placeholder="Placeholder" />
+      </mat-form-field>
+    </div>
 
-  <button type="button" mat-dialog-close mat-raised-button>cancle</button>
-  <button type="submit" mat-raised-button>Add</button>
-</form>
+    <button type="button" mat-dialog-close mat-raised-button>cancle</button>
+    <button type="submit" mat-raised-button>Add</button>
+  </form>
+</div>

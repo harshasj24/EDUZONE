@@ -1,0 +1,38 @@
+.upload-progress--overlay {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  flex-direction: column;
+}
+p {
+  font-size: 1.25rem;
+}
+
+.up1 {
+  display: none;
+  animation: dots 0.1s infinite ease-in-out;
+}
+.up2 {
+  display: none;
+  animation-delay: 0.15s;
+  animation: dots 0.1s infinite ease-in-out;
+}
+.up3 {
+  display: none;
+  animation: dots 0.1s infinite ease-in-out;
+  animation-delay: 0.25s;
+}
+
+@keyframes dots {
+  from {
+    display: none;
+  }
+  to {
+    display: block;
+  }
+}

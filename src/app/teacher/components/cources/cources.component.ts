@@ -38,7 +38,13 @@ export class CourcesComponent implements OnInit, AfterViewInit {
     });
   }
   ngOnInit(): void {
-    this.getAllCourse();
+    setTimeout(() => {
+      this.getAllCourse();
+    }, 1000);
+
+    this.matDailog.afterAllClosed.subscribe(() => {
+      this.getAllCourse();
+    });
   }
   handleOpen() {
     this.dailogRef = this.matDailog.open(UploadCourseComponent);

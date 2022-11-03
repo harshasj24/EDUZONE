@@ -4,10 +4,22 @@ import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { RouterModule } from "@angular/router";
 import { LoaderComponent } from "./loader/loader.component";
+import { UploadProgressComponent } from "./upload-progress/upload-progress.component";
+import { MaterialModule } from "../material";
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoaderComponent],
-  imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, FooterComponent, LoaderComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    LoaderComponent,
+    UploadProgressComponent,
+  ],
+  imports: [CommonModule, RouterModule, MaterialModule],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    LoaderComponent,
+    UploadProgressComponent,
+  ],
 })
 export class SharedModule {}

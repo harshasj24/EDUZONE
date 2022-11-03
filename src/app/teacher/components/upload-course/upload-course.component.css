@@ -22,3 +22,8 @@
 .upload-dailog--wrapper input:focus {
   box-shadow: none !important;
 }
+.wrapper {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}

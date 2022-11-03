@@ -16,12 +16,13 @@ export class JwtInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const modifedRequest = request.clone({
-      headers: request.headers.append(
-        "Authorization",
-        `Bearer ${this.localstorage.get("user").jwt}`
-      ),
-    });
-    return next.handle(modifedRequest);
+    let user = this.localstorage.get("user");
+    if (user) {
+      const modifedRequest = request.clone({
+        headers: request.headers.append("Authorization", `Bearer ${user?.jwt}`),
+      });
+      return next.handle(modifedRequest);
+    }
+    return next.handle(request);
   }
 }
