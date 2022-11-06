@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { TeacherService } from "../services/api/teacher-service/teacher.service";
 
-import { LocalStorageService } from "../services/api/localstorage-service/localstorage.service";
+import { LocalStorageService } from "../services/localstorage-service/localstorage.service";
 import { Teacher, TeacherGallery } from "../models";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { UploadDailogComponent } from "./components/upload-dailog/upload-dailog.component";
@@ -18,7 +18,7 @@ import { UploadDailogComponent } from "./components/upload-dailog/upload-dailog.
 })
 export class TeacherComponent implements OnInit {
   teacherDetails: Teacher;
- 
+
   constructor(
     private teacherService: TeacherService,
     private localstorage: LocalStorageService,
@@ -26,8 +26,6 @@ export class TeacherComponent implements OnInit {
   ) {
     this.teacherDetails = new Teacher();
   }
- 
- 
 
   ngOnInit(): void {
     let user = this.localstorage.get("user");
@@ -35,8 +33,4 @@ export class TeacherComponent implements OnInit {
       this.teacherDetails = res;
     });
   }
-
-
-
- 
 }

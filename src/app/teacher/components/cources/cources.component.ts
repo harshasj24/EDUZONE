@@ -11,6 +11,7 @@ import { UploadCourseComponent } from "../upload-course/upload-course.component"
 })
 export class CourcesComponent implements OnInit, AfterViewInit {
   allCourses: Course[];
+  isLoading: boolean = false;
   constructor(
     private courseService: CourseService,
     private matDailog: MatDialog
@@ -33,8 +34,10 @@ export class CourcesComponent implements OnInit, AfterViewInit {
     });
   }
   getAllCourse() {
+    this.isLoading = true;
     this.courseService.getCourseList().subscribe((res: any) => {
       this.allCourses = res;
+      this.isLoading = false;
     });
   }
   ngOnInit(): void {

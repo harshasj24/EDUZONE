@@ -1,7 +1,21 @@
-<app-loader *ngIf="isLoading"></app-loader>
+<mat-progress-bar
+  *ngIf="isLoading"
+  class="progress-bar"
+  mode="indeterminate"
+></mat-progress-bar>
 <div id="galleryTab" class="tab-body Gallery mt-3">
   <mat-card class="gallery-card" *ngFor="let gallery of teacherGallery">
     <img [src]="gallery.url" alt="" />
+    <div class="image-options">
+      <a [href]="gallery.url" download>
+        <button mat-icon-button color="primary">
+          <mat-icon>download</mat-icon>
+        </button>
+      </a>
+      <button (click)="deleteImage(gallery.url)" mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </mat-card>
   <button
     (click)="handleAdd()"

@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { Admin, Login } from "src/app/models";
 import { Teacher } from "../../../models/teacher.model";
 import { map, tap } from "rxjs/operators";
-import { LocalStorageService } from "../localstorage-service/localstorage.service";
+import { LocalStorageService } from "../../localstorage-service/localstorage.service";
 @Injectable({
   providedIn: "root",
 })
@@ -47,8 +47,8 @@ export class TeacherService {
     return this.httpClient.post(`${this.baseURL}/add/${id}`, teacher);
   }
 
-  public deleteTeacher(id: number): Observable<Object> {
-    return this.httpClient.delete(`${this.baseURL}/delete/${id}`);
+  public deleteTeacher(id: string): Observable<Object> {
+    return this.httpClient.delete(`${this.baseURL}/images/delete/${id}`);
   }
 
   public teacherLogin(teacherDetails: Login): Observable<Object> {

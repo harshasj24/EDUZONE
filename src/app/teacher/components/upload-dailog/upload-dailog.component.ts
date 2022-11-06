@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { LocalStorageService } from "src/app/services/api/localstorage-service/localstorage.service";
+import { LocalStorageService } from "src/app/services/localstorage-service/localstorage.service";
 import { TeacherService } from "src/app/services/api/teacher-service/teacher.service";
 
 @Component({

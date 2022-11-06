@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Admin, Login } from "src/app/models";
-import { LocalStorageService } from "src/app/services/api/localstorage-service/localstorage.service";
+import { LocalStorageService } from "src/app/services/localstorage-service/localstorage.service";
 import { StudentService } from "src/app/services/api/student-service/student.service";
 import { TeacherService } from "src/app/services/api/teacher-service/teacher.service";
 import jwtDecode from "jwt-decode";

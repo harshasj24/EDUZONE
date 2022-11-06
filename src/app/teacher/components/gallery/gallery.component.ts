@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 import { Teacher, TeacherGallery } from "src/app/models";
-import { LocalStorageService } from "src/app/services/api/localstorage-service/localstorage.service";
+import { LocalStorageService } from "src/app/services/localstorage-service/localstorage.service";
 import { TeacherService } from "src/app/services/api/teacher-service/teacher.service";
 import { UploadDailogComponent } from "../upload-dailog/upload-dailog.component";
 
@@ -77,5 +77,17 @@ export class GalleryComponent implements OnInit {
     this.dailog = this.matDailog.open(UploadDailogComponent, {
       disableClose: true,
     });
+  }
+
+  deleteImage(url: string) {
+    let urlArr = url.split("/");
+    console.log(urlArr[urlArr.length - 1]);
+
+    this.teacherGallery = this.teacherGallery.filter((el) => el.url !== url);
+    this.teacherService
+      .deleteTeacher(urlArr[urlArr.length - 1])
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }
