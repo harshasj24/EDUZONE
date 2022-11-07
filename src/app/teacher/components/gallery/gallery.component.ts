@@ -10,6 +10,8 @@ import { Teacher, TeacherGallery } from "src/app/models";
 import { LocalStorageService } from "src/app/services/localstorage-service/localstorage.service";
 import { TeacherService } from "src/app/services/api/teacher-service/teacher.service";
 import { UploadDailogComponent } from "../upload-dailog/upload-dailog.component";
+import { StoreService } from "../../service/store.service";
+import { LoaderService } from "src/app/services/loader/loader.service";
 
 @Component({
   selector: "app-gallery",
@@ -17,7 +19,7 @@ import { UploadDailogComponent } from "../upload-dailog/upload-dailog.component"
   styleUrls: ["./gallery.component.css"],
 })
 export class GalleryComponent implements OnInit {
-  teacherDetails: Teacher;
+  // teacherDetails: Teacher;
   teacherGallery: TeacherGallery[];
   dailog: MatDialogRef<UploadDailogComponent>;
   isLoading: Boolean = false;
@@ -26,9 +28,11 @@ export class GalleryComponent implements OnInit {
   constructor(
     private teacherService: TeacherService,
     private localstorage: LocalStorageService,
-    private matDailog: MatDialog
+    private matDailog: MatDialog,
+    private store: StoreService,
+    private loader: LoaderService
   ) {
-    this.teacherDetails = new Teacher();
+    // this.teacherDetails = new Teacher();
   }
   ngAfterViewInit(): void {
     window.addEventListener("scroll", () => {
@@ -51,32 +55,39 @@ export class GalleryComponent implements OnInit {
     });
   }
 
-  getTeacherGallery() {
-    this.isLoading = true;
-    this.teacherService.getTeachersMedia().subscribe((res: any) => {
-      console.log(res);
-      this.teacherGallery = res;
-      this.isLoading = false;
-    });
-  }
+  // getTeacherGallery() {
+  //   this.isLoading = true;
+  //   this.teacherService.getTeachersMedia().subscribe((res: any) => {
+  //     console.log(res);
+  //     this.teacherGallery = res;
+  //     this.isLoading = false;
+  //   });
+  // }
 
   ngOnInit(): void {
-    this.getTeacherGallery();
-    let user = this.localstorage.get("user");
-    this.teacherService.getTeachersDetails(user.userName).subscribe((res) => {
-      this.teacherDetails = res;
+    // this.getTeacherGallery();
+    this.store.getTeacherGallery();
+    this.store.teacherStore.subscribe((val) => {
+      this.teacherGallery = val.teacherGallery;
     });
-    this.matDailog.afterAllClosed.subscribe(() => {
+    let user = this.localstorage.get("user");
+    // this.teacherService.getTeachersDetails(user.userName).subscribe((res) => {
+    //   this.teacherDetails = res;
+    // });
+    this.store.uploadGalleryDailog?.afterClosed().subscribe(() => {
       console.log("called");
 
-      this.getTeacherGallery();
+      // this.getTeacherGallery();
     });
   }
 
   handleAdd() {
-    this.dailog = this.matDailog.open(UploadDailogComponent, {
-      disableClose: true,
-    });
+    this.store.uploadGalleryDailog = this.matDailog.open(
+      UploadDailogComponent,
+      {
+        disableClose: true,
+      }
+    );
   }
 
   deleteImage(url: string) {

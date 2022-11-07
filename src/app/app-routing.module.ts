@@ -17,7 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import("./teacher/teacher.module").then((m) => m.TeacherModule),
   },
-  { path: "students", component: ListStudentsComponent },
+  {
+    path: "students"  ,
+    canActivate: [AuthGuard],
+    component: ListStudentsComponent,
+  },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
 ];

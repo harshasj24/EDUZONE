@@ -1,41 +1,110 @@
-<div class="py-5" style="min-height: 500px;">
-    <div class="p-2 pt-md-4 pb-md-3 mx-auto text-center">
-        <h3 class="text-center">Create your EDUZONE account!</h3>
-    </div>
-    <div class="row">
-        <div class="col-md-8 offset-2">
-            <h4 class="mb-3">Your adress</h4>
-            <form action="order.html" method="get">
+<div class="py-5" style="min-height: 500px">
+  <div class="p-2 pt-md-4 pb-md-3 mx-auto text-center">
+    <h3 class="text-center">Create your EDUZONE account!</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h4 class="mb-3">Your adress</h4>
+      <form [formGroup]="registrationForm" (ngSubmit)="handleSubmit()" action="order.html" method="get">
+        <div class="row">
+          <div class="col-md-6 mb-3 form-group">
+            <label for="firstName">Full name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              formControlName="name"
+              placeholder="Your Full name"
+            />
+          </div>
+          <div class="col-md-6  form-group">
+            <!-- <label for="lastName">Last name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="Your last name"
+              value=""
+            /> -->
+            <label for="email">Email</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 form-group">
+            <label for="username">User Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              formControlName="userName"
+              placeholder="Your user name"
+            />
+          </div>
+          <div class="col-md-6 mb-3 form-group">
+            <label for="password">Password</label>
+            <input
+              type="text"
+              class="form-control"
+              id="password"
+              formControlName="password"
+              placeholder="Your Password"
+            />
+          </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3 form-group">
-                        <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Your first name">
-                    </div>
-                    
-                    <div class="col-md-6 mb-3 form-group">
-                        <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Your last name" value="">
-                    </div>
-                </div>
-                    
-                <div class="mb-3 form-group">
-                    <label for="email">Email</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">@</span>
-                        </div>
-                        <input type="text" class="form-control" id="email" placeholder="Email">
-                    </div>
-                </div>
 
-                <div class="mb-3 form-group">
-                    <label for="address">Adress</label>
-                    <input type="text" class="form-control" id="address" placeholder="Bakery street">
-                </div>
+         
+        </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3 form-group">
+        <div class="mb-3 form-group">
+          <!-- <label for="email">Email</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+            />
+          </div> -->
+        </div>
+
+        <div class="mb-3 form-group">
+          <label for="address">Adress</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="address"
+            id="address"
+            placeholder="Bakery street"
+          />
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3 form-group w-100">
+              <label for="contact">Contact</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contact"
+                formControlName="contact"
+                placeholder="Contact"
+              />
+            </div>
+          </div>
+          <!-- <div class="col-md-6 mb-3 form-group">
                         <label for="state">What is your field of interest?</label>
                         <select class="custom-select w-100" id="state">
                                 <option>Front-End Web Developer</option>
@@ -43,22 +112,46 @@
                                 <option>Machine Learning</option>
                                 <option>Cyber Security</option>
                         </select>
-                    </div>
+                    </div> -->
+          <div class="col-md-6">
+            <div class="mb-3 form-group w-100">
+              <label for="qualification">Qualification</label>
+              <input
+                type="text"
+                class="form-control"
+                id="qualification"
+                formControlName="qualification"
+                placeholder="Qualification"
+              />
+            </div>
+          </div>
 
-                    <div class="col-md-6 mb-3 form-group">
-                        <label for="country">Do you have any previous experience?</label>
-                        <select class="custom-select w-75" id="country">
-                            <option>No experience</option>
-                            <option>Basic knowledge</option>
-                            <option>Intermediate programmer</option>
-                            <option>Hackerman</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-dark btn-md mb-3 w-50" type="submit">Start learning!</button>
-                </div>
-            </form>
+          <div class="col-md-6 mb-3 form-group">
+            <label for="country">Tell us who you are</label>
+            <select formControlName="role" class="custom-select w-75" id="country">
+                <option value="ROLE_teacher">Teacher</option>
+                <option value="student">Student</option>
+            </select>
+          </div>
+          <div *ngIf="role.value==='ROLE_teacher'" class="col-md-6">
+            <div class="mb-3 form-group w-100">
+              <label for="cources">Cources</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cources"
+                formControlName="cources"
+                placeholder="Csources"
+              />
+            </div>
+          </div>
         </div>
+        <div class="text-center">
+          <button class="btn btn-dark btn-md mb-3 w-50" type="submit">
+            Start learning!
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

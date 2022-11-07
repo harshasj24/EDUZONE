@@ -15,4 +15,5 @@ export class AuthService {
     this.localstorge.clearAll();
     this.router.navigate(["/"]);
   }
+
 }

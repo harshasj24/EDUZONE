@@ -30,4 +30,7 @@ export class StudentService {
   public loginStudent(student: Login): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}/student/login`, student);
   }
+  public registerStudent(student: any): Observable<Object> {
+    return this.httpClient.post(`${this.baseURL}/student/in`, student);
+  }
 }

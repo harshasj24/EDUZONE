@@ -1,9 +1,4 @@
 <div id="cources" class="cources--wrapper cources">
-  <mat-progress-bar
-    *ngIf="isLoading"
-    class="progress-bar"
-    mode="indeterminate"
-  ></mat-progress-bar>
   <div class="cources__cards">
     <mat-card *ngFor="let course of allCourses">
       <h1>{{ course.courseName }}</h1>

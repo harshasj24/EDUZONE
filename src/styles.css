@@ -8,3 +8,15 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+.success{
+  background-color: #53a653;
+  color: white;
+}
+
+.error{
+  background-color: #c62828;
+  color: white;
+}
+.mat-snackbar-action{
+  color: white !important;
+}

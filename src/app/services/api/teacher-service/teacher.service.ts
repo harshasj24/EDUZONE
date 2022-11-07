@@ -57,4 +57,10 @@ export class TeacherService {
       teacherDetails
     );
   }
+  public teacherRegistartion(teacherDetails: any): Observable<Object> {
+    return this.httpClient.post(
+      `${this.baseURL}/teacher/in`,
+      teacherDetails
+    );
+  }
 }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Course } from "src/app/models";
 import { CourseService } from "src/app/services/api/course-service/course.service";
+import { StoreService } from "../../service/store.service";
 
 @Component({
   selector: "app-upload-course",
@@ -12,7 +13,8 @@ import { CourseService } from "src/app/services/api/course-service/course.servic
 export class UploadCourseComponent implements OnInit {
   constructor(
     private courseService: CourseService,
-    private matDailog: MatDialog
+    private matDailog: MatDialog,
+    private store:StoreService
   ) {}
   @ViewChild("file") file: ElementRef;
   value: number = 0;
@@ -32,13 +34,14 @@ export class UploadCourseComponent implements OnInit {
     Object.keys(formValues).map((key) => {
       formData.append(key, formValues[key]);
     });
-    this.isLoading = true;
+    this.isLoading=true
+    this.isLoading = this.store.addCourse(formData);
 
-    this.courseService.addCourse(formData).subscribe((res) => {
-      console.log(res);
-      this.isLoading = false;
-      this.matDailog.closeAll();
-    });
+    // this.courseService.addCourse(formData).subscribe((res) => {
+    //   console.log(res);
+    //   this.isLoading = false;
+    //   this.store.uploadCourseDailog.close()
+    // });
   }
   ngOnInit(): void {}
 }

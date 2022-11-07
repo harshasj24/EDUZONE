@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       if (role.authority === "ROLE_teacher") {
         this.router.navigate(["/teachers"]);
       } else if (role.authority === "student") {
-        this.router.navigate(["/student"]);
+        this.router.navigate(["/students"]);
       }
     };
     if (role === "teacher") {

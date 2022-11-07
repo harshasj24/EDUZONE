@@ -9,6 +9,8 @@
   z-index: 1005;
 }
 .loader {
+  position: fixed;
+  top: 50%;
   animation: rotate 1s infinite;
   height: 50px;
   width: 50px;
