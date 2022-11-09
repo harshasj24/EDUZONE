@@ -13,7 +13,11 @@ import { UploadCourseComponent } from "./components/upload-course/upload-course.
 
 const routes: Routes = [
   {
-    path: "",
+    path: "allTeachers",
+    component: ListTeachersComponent,
+  },
+  {
+    path: ":userName",
     component: TeacherComponent,
   },
 ];

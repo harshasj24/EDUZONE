@@ -13,6 +13,7 @@
   <button
     class="add hide"
     matTooltip="Add Images"
+    *ngIf="isTeacher"
     (click)="handleOpen()"
     id="addBtn"
     mat-icon-button

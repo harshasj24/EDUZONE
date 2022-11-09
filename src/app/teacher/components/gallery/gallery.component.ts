@@ -29,11 +29,12 @@ export class GalleryComponent implements OnInit {
     private teacherService: TeacherService,
     private localstorage: LocalStorageService,
     private matDailog: MatDialog,
-    private store: StoreService,
+    public store: StoreService,
     private loader: LoaderService
   ) {
     // this.teacherDetails = new Teacher();
   }
+  isTeacher = this.store.isTeacher();
   ngAfterViewInit(): void {
     window.addEventListener("scroll", () => {
       let addBtn = document.getElementById("addBtn");

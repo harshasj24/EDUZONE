@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { LoaderComponent } from "./loader/loader.component";
 import { UploadProgressComponent } from "./upload-progress/upload-progress.component";
 import { MaterialModule } from "../material";
+import { ListLayoutComponent } from "./layouts/list-layout/list-layout.component";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { MaterialModule } from "../material";
     FooterComponent,
     LoaderComponent,
     UploadProgressComponent,
+    ListLayoutComponent,
   ],
   imports: [CommonModule, RouterModule, MaterialModule],
   exports: [
@@ -20,6 +22,7 @@ import { MaterialModule } from "../material";
     FooterComponent,
     LoaderComponent,
     UploadProgressComponent,
+    ListLayoutComponent,
   ],
 })
 export class SharedModule {}

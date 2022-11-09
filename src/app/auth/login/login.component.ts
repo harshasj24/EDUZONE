@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit {
       };
       this.localstorage.set("user", user);
       if (role.authority === "ROLE_teacher") {
-        this.router.navigate(["/teachers"]);
+        this.router.navigate(["/teachers", decodedToken.sub]);
       } else if (role.authority === "student") {
-        this.router.navigate(["/students"]);
+        this.router.navigate(["/students", decodedToken.sub]);
       }
     };
     if (role === "teacher") {

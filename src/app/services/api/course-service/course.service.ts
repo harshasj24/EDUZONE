@@ -14,10 +14,12 @@ export class CourseService {
     private httpClient: HttpClient,
     private localstorage: LocalStorageService
   ) {}
-
+  getUser() {
+    return this.localstorage.get("user");
+  }
   public getCourseList(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(
-      `${this.baseURL}/course/getall/${this.localstorage.get("user").id}`
+      `${this.baseURL}/course/getall/${this.getUser().teacherId}`
     );
   }
 
@@ -27,7 +29,7 @@ export class CourseService {
 
   public addCourse(course: any): Observable<Object> {
     return this.httpClient.post(
-      `${this.baseURL}/course/up/${this.localstorage.get("user").id}`,
+      `${this.baseURL}/course/up/${this.getUser().teacherId}`,
       course
     );
   }

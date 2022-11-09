@@ -12,6 +12,9 @@ import { Teacher, TeacherGallery } from "../models";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { UploadDailogComponent } from "./components/upload-dailog/upload-dailog.component";
 import { LoaderService } from "../services/loader/loader.service";
+import { ActivatedRoute } from "@angular/router";
+import { StoreService } from "./service/store.service";
+import { StudentStoreService } from "../student/services/store/store.service";
 @Component({
   selector: "app-teacher",
   templateUrl: "./teacher.component.html",
@@ -23,19 +26,46 @@ export class TeacherComponent implements OnInit {
   constructor(
     private teacherService: TeacherService,
     private localstorage: LocalStorageService,
-    private matDailog: MatDialog,
-    private loaderService: LoaderService
+    public store: StoreService,
+    private loaderService: LoaderService,
+    private route: ActivatedRoute,
+    public studentStore: StudentStoreService
   ) {
     this.teacherDetails = new Teacher();
   }
-  loader: boolean;
+
+  userName = "";
+  regTeachers: Teacher[];
+  checkReg() {
+    let regIds: number[] = this.localstorage.get("registedIds");
+    return regIds.includes(this.teacherDetails.id);
+  }
+  handelClick() {
+    if (!this.checkReg()) {
+      console.log("called");
+      this.studentStore.regStudentToTeacher(this.teacherDetails.id);
+      let ids = this.localstorage.get("registedIds");
+      ids.push(this.teacherDetails.id);
+      this.localstorage.set("registedIds", ids);
+    }
+  }
+
+  isTeacher = this.store.isTeacher();
   ngOnInit(): void {
-    this.loaderService.loader.subscribe((load: any) => {
-      this.loader = load;
-    });
     let user = this.localstorage.get("user");
-    this.teacherService.getTeachersDetails(user.userName).subscribe((res) => {
-      this.teacherDetails = res;
+    // getting username form route
+    this.route.params.subscribe((route) => {
+      this.userName = route.userName;
+      this.store.getTeacherDetails(route.userName);
+    });
+    //getting teacherdetails
+    this.store.teacherStore.subscribe((store) => {
+      this.teacherDetails = store.teacherDetails;
+    });
+    // All registread teacher
+    this.studentStore.studentStore.subscribe((store) => {
+      console.log(store.studentDetails);
+      this.regTeachers = store.studentDetails;
     });
   }
 }

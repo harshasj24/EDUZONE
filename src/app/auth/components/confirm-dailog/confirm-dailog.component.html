@@ -3,7 +3,9 @@
     <img width="120px" src="../../../../assets/images/success.webp" alt="" />
     <h1>Congratulations!</h1>
     <p>You have successfully created account with us</p>
-    <button mat-raised-button color="primary">Login</button>
+    <button (click)="handleClick('login')" mat-raised-button color="primary">
+      Login
+    </button>
   </div>
   <div *ngIf="dailogData.type === 'error'" class="dailog__error">
     <img width="120px" src="../../../../assets/images/error.png" alt="" />
@@ -11,6 +13,8 @@
     <p>
       It seams that you have enterd the worng email id or the link is broken
     </p>
-    <button mat-raised-button color="primary">Try Again</button>
+    <button (click)="handleClick('tryagain')" mat-raised-button color="primary">
+      Try Again
+    </button>
   </div>
 </div>

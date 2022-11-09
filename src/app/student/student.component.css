@@ -1,10 +1,10 @@
-.teacher__header {
+.student__header {
   width: calc(100vw - 18px);
   overflow: hidden;
   position: relative;
 }
 
-.teacher__header__bg {
+.student__header__bg {
   width: 100%;
   height: 36vh;
   background: url("https://img.freepik.com/free-photo/beautiful-shot-small-lake-with-wooden-rowboat-focus-amazing-clouds-sky_181624-2044.jpg?w=740&t=st=1667221020~exp=1667221620~hmac=f26dee4d86a01f2957e8b29bc3a46c2ff94680d077c6073bbee05982c89c8d6d");
@@ -13,7 +13,7 @@
   background-position: center;
   background-attachment: fixed;
 }
-.teacher__header img {
+.student__header img {
   width: 100% !important;
   height: 100%;
 }
@@ -21,11 +21,11 @@
   /* height: 80vh; */
   position: relative;
 }
-.teacher__body {
+.student__body {
   padding: 10px;
   margin-top: 50px;
 }
-.teacher__body::ng-deep .mat-tab-header {
+.student__body::ng-deep .mat-tab-header {
   position: sticky;
 
   top: 90px;
@@ -45,10 +45,11 @@
   overflow: hidden;
 }
 .header__profile-pic .img {
-  background: url("../../assets/images/teach.jpg");
+  background: url("../../assets/images/profile3.png");
   width: 100%;
   height: 100%;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .header__profile-details {
   margin-left: 200px;
@@ -73,9 +74,9 @@
   margin-right: 10px;
 }
 /* .card-img {
-  width: 200px;
-  height: 250px;
-} */
+    width: 200px;
+    height: 250px;
+  } */
 .example-card {
   width: 250px;
   height: 200px;
@@ -84,40 +85,66 @@ mat-card-actions {
   margin: 0 !important;
 }
 /* .card-img img {
-  height: 100% !important;
-  width: 100% !important;
-} */
+    height: 100% !important;
+    width: 100% !important;
+  } */
 /* 
-.gallery-card {
-  width: 300px;
-  height: 200px;
-}
-.Gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.gallery-card img {
-  width: 100%;
-  height: 100%;
-}
-.card-actions {
-  margin: 0;
-}
-.add {
-  position: fixed;
-  left: 93%;
-  background-color: rgb(248, 248, 28);
-  color: white !important;
-  z-index: 1004 !important;
-  top: 500px;
-  /* bottom: 200px; */
+  .gallery-card {
+    width: 300px;
+    height: 200px;
+  }
+  .Gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .gallery-card img {
+    width: 100%;
+    height: 100%;
+  }
+  .card-actions {
+    margin: 0;
+  }
+  .add {
+    position: fixed;
+    left: 93%;
+    background-color: rgb(248, 248, 28);
+    color: white !important;
+    z-index: 1004 !important;
+    top: 500px;
+    /* bottom: 200px; */
 /* } */
 
 /* .hide {
-  display: none;
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  } */
+.student__teachers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-
-.show {
-  display: block;
-} */
+.teacher {
+  width: calc(25% - 10px);
+  border: 1px solid rgb(228, 227, 227);
+  display: flex;
+  flex-direction: column;
+}
+.teacher h3 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.teacher img {
+  align-self: center;
+}
+.add-teacher {
+  width: calc(25% - 10px);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border: 2px dotted rgb(190, 190, 190);
+}

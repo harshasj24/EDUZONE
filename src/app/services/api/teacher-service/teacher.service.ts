@@ -17,7 +17,12 @@ export class TeacherService {
   ) {}
 
   public getTeachersList(): Observable<Teacher[]> {
-    return this.httpClient.get<Teacher[]>(`${this.baseURL}`);
+    return this.httpClient.get<Teacher[]>(
+      `${this.baseURL}/adminTeacher/allteacher`
+    );
+  }
+  getUser() {
+    return this.localstorage.get("user");
   }
   public getTeachersDetails(userName: string): Observable<any> {
     return this.httpClient
@@ -25,17 +30,20 @@ export class TeacherService {
       .pipe(
         map((res) => res.admin),
         tap((res) => {
-          let user = { ...this.localstorage.get("user"), id: res.id };
+          let user = { ...this.localstorage.get("user"), teacherId: res.id };
+
           this.localstorage.set("user", user);
         })
       );
   }
   public getTeachersMedia(): Observable<Teacher[]> {
-    return this.httpClient.get<Teacher[]>(`${this.baseURL}/images/getall/1`);
+    return this.httpClient.get<Teacher[]>(
+      `${this.baseURL}/images/getall/${this.getUser().teacherId}`
+    );
   }
   public addTeacherMedia(file: any): Observable<Object> {
     return this.httpClient.post(
-      `${this.baseURL}/images/upload/${this.localstorage.get("user")?.id}`,
+      `${this.baseURL}/images/upload/${this.getUser().teacherId}`,
       file
     );
   }
@@ -57,10 +65,8 @@ export class TeacherService {
       teacherDetails
     );
   }
+
   public teacherRegistartion(teacherDetails: any): Observable<Object> {
-    return this.httpClient.post(
-      `${this.baseURL}/teacher/in`,
-      teacherDetails
-    );
+    return this.httpClient.post(`${this.baseURL}/teacher/in`, teacherDetails);
   }
 }

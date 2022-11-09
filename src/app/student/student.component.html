@@ -1,0 +1,54 @@
+<div class="student--wrapper">
+  <div class="student__header">
+    <div class="student__header__bg"></div>
+    <!-- <img
+          src="https://img.freepik.com/free-photo/beautiful-shot-small-lake-with-wooden-rowboat-focus-amazing-clouds-sky_181624-2044.jpg?w=740&t=st=1667221020~exp=1667221620~hmac=f26dee4d86a01f2957e8b29bc3a46c2ff94680d077c6073bbee05982c89c8d6d"
+          alt=""
+        /> -->
+    <div class="header__profile-pic mat-elevation-z4">
+      <div class="img"></div>
+    </div>
+    <div class="header__profile-details">
+      <h1>{{ studentDetails?.name | titlecase }}</h1>
+      <h3>{{ studentDetails?.qualification }}</h3>
+      <div class="addtional-details">
+        <p>
+          <mat-icon>location_on</mat-icon>
+          {{ studentDetails?.address }}
+        </p>
+        <p>
+          <mat-icon>email</mat-icon>
+          {{ studentDetails?.email }}
+        </p>
+        <p>
+          <mat-icon>phone</mat-icon>
+          {{ studentDetails?.contact }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="student__body">
+    <h1>Registred Teachers</h1>
+    <div class="student__teachers">
+      <mat-card
+        [routerLink]="['/teachers', teacher.userName]"
+        *ngFor="let teacher of regsitredTeachers"
+        class="mt-2 teacher"
+      >
+        <img width="100px" src="../../assets/images/teach.jpg" alt="" />
+        <h1>{{ teacher.name | titlecase }}</h1>
+        <h3><mat-icon>email</mat-icon> {{ teacher.email }}</h3>
+        <h3><mat-icon>phone</mat-icon> {{ teacher.contact }}</h3>
+      </mat-card>
+      <div class="mt-2 add-teacher">
+        <button
+          [routerLink]="['/teachers', 'allTeachers']"
+          mat-button
+          color="primary"
+        >
+          Add Teacher
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

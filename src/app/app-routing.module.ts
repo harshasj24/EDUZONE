@@ -18,9 +18,10 @@ const routes: Routes = [
       import("./teacher/teacher.module").then((m) => m.TeacherModule),
   },
   {
-    path: "students"  ,
+    path: "students",
     canActivate: [AuthGuard],
-    component: ListStudentsComponent,
+    loadChildren: () =>
+      import("./student/student.module").then((m) => m.StudentModule),
   },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },

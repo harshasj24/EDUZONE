@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.openDailog("error");
     this.registrationForm.get("role").valueChanges.subscribe((val) => {
       console.log(val);
 
@@ -55,6 +54,7 @@ export class RegisterComponent implements OnInit {
     const dailog: MatDialogRef<ConfirmDailogComponent> = this.matDailog.open(
       ConfirmDailogComponent,
       {
+        disableClose: true,
         data: {
           type,
         },
@@ -64,6 +64,8 @@ export class RegisterComponent implements OnInit {
 
   handleSubmit() {
     if (this.role.value === "ROLE_teacher") {
+      console.log(this.registrationForm.value);
+
       this.teacherService
         .teacherRegistartion(this.registrationForm.value)
         .subscribe(
@@ -82,8 +84,11 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           (res) => {
             console.log(res);
+            this.openDailog("success");
           },
-          () => {}
+          () => {
+            this.openDailog("error");
+          }
         );
     }
   }

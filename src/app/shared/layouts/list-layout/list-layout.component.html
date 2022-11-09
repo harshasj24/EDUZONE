@@ -1,4 +1,4 @@
-<!-- <div class="list-teachers--wrapper">
+<div class="list-teachers--wrapper">
   <div class="search">
     <mat-form-field class="w-100" appearance="outline">
       <mat-icon matPrefix>search</mat-icon>
@@ -7,17 +7,20 @@
   </div>
   <div class="body">
     <div class="cards">
-      <mat-card class="teacher-card" *ngFor="let teacher of allTeachers">
+      <mat-card class="teacher-card" *ngFor="let data of listData">
         <div class="dp">
           <img width="50px" src="../../../assets/images/teach.jpg" alt="" />
         </div>
-        <div class="name">{{ teacher.name | titlecase }}</div>
-        <button mat-stroked-button color="primary">
+        <div class="name">{{ data.name | titlecase }}</div>
+        <button
+          *ngIf="data.role === 'ROLE_teacher'"
+          mat-stroked-button
+          color="primary"
+          (click)="handleClick(data.userName)"
+        >
           View Profile <mat-icon>visibility_on</mat-icon>
         </button>
       </mat-card>
     </div>
   </div>
-</div> -->
-
-<app-list-layout [listData]="allTeachers"></app-list-layout>
+</div>

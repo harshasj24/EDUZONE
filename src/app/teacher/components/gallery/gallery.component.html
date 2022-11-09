@@ -12,13 +12,18 @@
           <mat-icon>download</mat-icon>
         </button>
       </a>
-      <button (click)="deleteImage(gallery.url)" mat-icon-button>
+      <button
+        *ngIf="isTeacher"
+        (click)="deleteImage(gallery.url)"
+        mat-icon-button
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </div>
   </mat-card>
   <button
     (click)="handleAdd()"
+    *ngIf="isTeacher"
     class="add hide"
     matTooltip="Add Images"
     id="addBtn"

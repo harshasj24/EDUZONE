@@ -1,9 +1,14 @@
+import { Teacher } from "./teacher.model";
+
 export class Student {
   id: number;
-  firstName: String;
-  lastName: String;
-  homeAddress: String;
-  emailAddress: String;
-  studentPoints: number;
-  password: String;
+  name: string;
+  qualification: string;
+  contact: number;
+  email: string;
+  address: string;
+  userName: string;
+  password: string;
+  teacher: Teacher[];
+  role: string;
 }

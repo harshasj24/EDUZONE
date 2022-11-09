@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Teacher } from "../../models/teacher.model";
 import { TeacherService } from "../../services/api/teacher-service/teacher.service";
+import { StoreService } from "../service/store.service";
 declare var $: any;
 
 @Component({
@@ -13,11 +14,14 @@ export class ListTeachersComponent implements OnInit {
   // public addTeacher: Teacher;
   // public selectedTeacher: Teacher;
 
+  allTeachers: Teacher[];
+
   // constructor(private teacherService: TeacherService) {
   //   this.addTeacher = new Teacher();
   //   this.addTeacher.teacherSalary = 0;
   //   this.selectedTeacher = new Teacher();
   // }
+  constructor(private store: StoreService) {}
 
   // private getTeachers() {
   //   this.teacherService.getTeachersList()
@@ -28,6 +32,13 @@ export class ListTeachersComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getTeachers();
+    // getting all teacher
+    console.log("u ");
+
+    this.store.getAllTeachers();
+    this.store.teacherStore.subscribe((store) => {
+      this.allTeachers = store.allTeachers;
+    });
   }
 
   // public onSubmit() {

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Course } from "src/app/models";
 import { CourseService } from "src/app/services/api/course-service/course.service";
+import { LocalStorageService } from "src/app/services/localstorage-service/localstorage.service";
 import { StoreService } from "../../service/store.service";
 import { UploadCourseComponent } from "../upload-course/upload-course.component";
 
@@ -16,9 +17,11 @@ export class CourcesComponent implements OnInit, AfterViewInit {
   constructor(
     private courseService: CourseService,
     private matDailog: MatDialog,
-    private store:StoreService
+    public store: StoreService,
+    private localstorage: LocalStorageService
   ) {}
   dailogRef: MatDialogRef<UploadCourseComponent>;
+  isTeacher = this.store.isTeacher();
   ngAfterViewInit(): void {
     window.addEventListener("scroll", () => {
       let addBtn = document.getElementById("addBtn");
@@ -37,24 +40,24 @@ export class CourcesComponent implements OnInit, AfterViewInit {
   }
   getAllCourse() {
     this.isLoading = true;
- 
+
     this.courseService.getCourseList().subscribe((res: any) => {
       this.allCourses = res;
       this.isLoading = false;
     });
   }
   ngOnInit(): void {
-       this.store.teacherStore.subscribe((teachDet)=>{
-      this.allCourses=teachDet.teacherCourse
-    })
-    
+    this.store.teacherStore.subscribe((teachDet) => {
+      this.allCourses = teachDet.teacherCourse;
+    });
+
     setTimeout(() => {
-      this.store.getAllCourse()
+      this.store.getAllCourse();
       // this.getAllCourse();
     }, 1000);
 
     this.store.uploadCourseDailog.afterClosed().subscribe(() => {
-    this.store.getAllCourse()
+      this.store.getAllCourse();
     });
   }
   handleOpen() {
