@@ -23,7 +23,7 @@
             class="form-control"
           />
           <mat-error *ngIf="userName?.touched && userName?.invalid"
-            >Username Is Required</mat-error
+            > *Username is Required</mat-error
           >
         </div>
         <div class="form-group">
@@ -37,7 +37,7 @@
             formControlName="password"
           />
           <mat-error *ngIf="password?.touched && password?.invalid"
-            >Password Is Required</mat-error
+            >*Password is Required</mat-error
           >
         </div>
         <div class="input-group mb-3 d-flex flex-column">
@@ -52,7 +52,7 @@
             <option value="teacher">Teacher</option>
           </select>
           <mat-error *ngIf="role?.touched && role?.invalid"
-            >Role Is Required</mat-error
+            >*Role is Required</mat-error
           >
         </div>
         <div class="form-group">
