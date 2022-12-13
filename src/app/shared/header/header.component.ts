@@ -42,7 +42,11 @@ export class HeaderComponent implements OnInit {
     }
     return links;
   }
+  role(){
+    return this.localstorage.get("user").role==='student'
+  }
   ngOnInit(): void {
+
     setInterval(() => {
       this.time = new Date();
     }, 1000);
