@@ -24,12 +24,12 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="getLink().teacher">Teachers</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="role()" class="nav-item">
         <a class="nav-link" [routerLink]="getLink().student">Students</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" [routerLink]="['courses']">Courses</a>
-      </li>
+      </li> -->
     </ul>
     <ul *ngIf="!isLoggedIn()" class="navbar-nav ml-auto">
       <li class="nav-item">

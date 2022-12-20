@@ -1,3 +1,4 @@
+
 <div class="py-5" style="min-height: 500px">
   <div class="p-2 pt-md-4 pb-md-3 mx-auto text-center">
     <h3 class="text-center">Create your EDUZONE account!</h3>
@@ -5,7 +6,7 @@
   <div class="row">
     <div class="col-md-8 offset-2">
       <h4 class="mb-3">Your adress</h4>
-      <form [formGroup]="registrationForm" (ngSubmit)="handleSubmit()" action="order.html" method="get">
+      <form [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && handleSubmit()" action="order.html" method="get">
         <div class="row">
           <div class="col-md-6 mb-3 form-group">
             <label for="firstName">Full name</label>
@@ -16,6 +17,9 @@
               formControlName="name"
               placeholder="Your Full name"
             />
+            <mat-error *ngIf="name?.touched && name?.invalid"
+            >*Name is Required</mat-error
+          >
           </div>
           <div class="col-md-6  form-group">
             <!-- <label for="lastName">Last name</label>
@@ -38,6 +42,8 @@
                 formControlName="email"
                 placeholder="Email"
               />
+              <mat-error *ngIf="email?.touched && email?.invalid"
+            >*Email is Required</mat-error>
             </div>
           </div>
           <div class="col-md-6 mb-3 form-group">
@@ -49,6 +55,8 @@
               formControlName="userName"
               placeholder="Your user name"
             />
+            <mat-error *ngIf="userName?.touched && userName?.invalid"
+            >*UserName is Required</mat-error>
           </div>
           <div class="col-md-6 mb-3 form-group">
             <label for="password">Password</label>
@@ -59,6 +67,8 @@
               formControlName="password"
               placeholder="Your Password"
             />
+            <mat-error *ngIf="password?.touched && password?.invalid"
+            >*Password is Required</mat-error>
           </div>
 
 
@@ -89,6 +99,8 @@
             id="address"
             placeholder="Bakery street"
           />
+          <mat-error *ngIf="address?.touched && address?.invalid"
+            >*Address is Required</mat-error>
         </div>
 
         <div class="row">
@@ -102,6 +114,8 @@
                 formControlName="contact"
                 placeholder="Contact"
               />
+              <mat-error *ngIf="contact?.touched && contact?.invalid"
+            >*Contact is Required</mat-error>
             </div>
           </div>
           <!-- <div class="col-md-6 mb-3 form-group">
@@ -123,6 +137,8 @@
                 formControlName="qualification"
                 placeholder="Qualification"
               />
+              <mat-error *ngIf="qualification?.touched && qualification?.invalid"
+              >*Qualification is Required</mat-error>
             </div>
           </div>
 

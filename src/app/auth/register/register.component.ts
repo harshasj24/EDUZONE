@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
@@ -18,15 +19,17 @@ export class RegisterComponent implements OnInit {
     private studentService: StudentService,
     private matDailog: MatDialog
   ) {}
+
+
   registrationForm = new FormGroup({
-    name: new FormControl("", Validators.required),
-    contact: new FormControl("", Validators.required),
-    email: new FormControl("", Validators.required),
-    address: new FormControl("", Validators.required),
-    role: new FormControl("", Validators.required),
-    userName: new FormControl("", Validators.required),
-    qualification: new FormControl("", Validators.required),
-    password: new FormControl("", Validators.required),
+    name: new FormControl("", [Validators.required]),
+    contact: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required]),
+    address: new FormControl("", [Validators.required]),
+    role: new FormControl("", [Validators.required]),
+    userName: new FormControl("", [Validators.required]),
+    qualification: new FormControl("", [Validators.required]),
+    password: new FormControl("", [Validators.required]),
   });
   get role() {
     return this.registrationForm.get("role");
@@ -91,5 +94,26 @@ export class RegisterComponent implements OnInit {
           }
         );
     }
+  }
+  get name() {
+    return this.registrationForm.get("userName");
+  }
+  get email() {
+    return this.registrationForm.get("email");
+  }
+  get password() {
+    return this.registrationForm.get("password");
+  }
+  get address() {
+    return this.registrationForm.get("address");
+  }
+  get contact() {
+    return this.registrationForm.get("contact");
+  }
+  get qualification() {
+    return this.registrationForm.get("qualification");
+  }
+  get userName() {
+    return this.registrationForm.get("userName");
   }
 }
