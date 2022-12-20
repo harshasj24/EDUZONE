@@ -83,12 +83,7 @@ export class GalleryComponent implements OnInit {
   }
 
   handleAdd() {
-    this.store.uploadGalleryDailog = this.matDailog.open(
-      UploadDailogComponent,
-      {
-        disableClose: true,
-      }
-    );
+    this.store.uploadGalleryDailog = this.matDailog.open(UploadDailogComponent);
   }
 
   deleteImage(url: string) {

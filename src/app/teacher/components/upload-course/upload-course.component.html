@@ -29,8 +29,13 @@
         <input formControlName="reference" matInput placeholder="Placeholder" />
       </mat-form-field>
     </div>
-
-    <button type="button" mat-dialog-close mat-raised-button>cancle</button>
-    <button type="submit" mat-raised-button>Add</button>
+    <div class="dilog-action d-flex justify-content-end">
+      <button type="button" mat-dialog-close mat-raised-button color="accent">
+        cancle
+      </button>
+      <button type="submit" class="ml-2" color="primary" mat-raised-button>
+        Add
+      </button>
+    </div>
   </form>
 </div>

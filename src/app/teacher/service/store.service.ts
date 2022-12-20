@@ -45,7 +45,9 @@ export class StoreService {
     if (!this.loaded.isTeacherDetailsLoaded) {
       this.teacherService.getTeachersDetails(userName).subscribe((res) => {
         const preVal = this.teacherStore.value;
+        console.log(preVal);
         preVal.teacherDetails = res;
+        console.log(preVal);
         this.teacherStore.next(preVal);
       });
     }
@@ -56,11 +58,10 @@ export class StoreService {
     // if (!this.loaded.isTeacherGalleryLoaded) {
     this.teacherService.getTeachersMedia().subscribe((res: any) => {
       console.log(res);
-      this.teacherStore.next({ ...this.initialState, teacherGallery: res });
-      // this.isLoading = false;
+      const preval = this.teacherStore.value;
+      this.teacherStore.next({ ...preval, teacherGallery: res });
       this.loaded.isTeacherGalleryLoaded = true;
     });
-    // }
   }
   getAllCourse() {
     this.courseService.getCourseList().subscribe((res: any) => {
